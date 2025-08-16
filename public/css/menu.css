@@ -1,0 +1,218 @@
+:root {
+    --primary: #e94315;
+    --primary-light: #8625fc;
+    --secondary: #ff6b6b;
+    --success: #1dd1a1;
+    --danger: #ff6b6b;
+    --warning: #feca57;
+    --light: #ffffff;
+    --dark: #2d3436;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dfe6e9;
+    --gray-600: #6c757d;
+    --gray-800: #343a40;
+    --shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 12px 25px rgba(0, 0, 0, 0.15);
+    --border-radius: 16px;
+    --transition: all 0.3s ease;
+    --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--gray-100);
+    background-image: radial-gradient(#dfe6e9 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.app-container {
+    max-width: 480px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: var(--light);
+    position: relative;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .app-container {
+        max-width: 2000px;
+    }
+}
+
+.header {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 1.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.logo i {
+    margin-right: 0.5rem;
+}
+
+.back-btn {
+    background: rgba(255, 255, 255, 0.2);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.content {
+    padding: 1.5rem;
+}
+
+.menu-list {
+    list-style: none;
+}
+
+.menu-item {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    background: white;
+    box-shadow: var(--shadow);
+}
+
+.menu-item:hover {
+    background: rgba(106, 17, 203, 0.05);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.menu-item i {
+    width: 24px;
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.menu-item-text {
+    font-weight: 500;
+    color: var(--gray-800);
+    font-size: 1.1rem;
+}
+
+.menu-item.logout {
+    color: var(--danger);
+}
+
+.menu-item.logout i {
+    color: var(--danger);
+}
+
+.menu-item.logout .menu-item-text {
+    color: var(--danger);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--gray-200);
+    margin-bottom: 1.5rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.user-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    box-shadow: var(--shadow);
+}
+
+.user-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+    color: var(--gray-800);
+    font-weight: 700;
+}
+
+.user-info p {
+    color: var(--gray-600);
+    font-size: 0.9rem;
+}
+
+.footer {
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--gray-600);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--gray-200);
+}
+
+@media (max-width: 480px) {
+    .app-container {
+        max-width: 100%;
+    }
+    
+    .user-avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .user-info h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .menu-list {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .user-profile {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}

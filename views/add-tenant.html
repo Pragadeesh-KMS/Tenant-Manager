@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Collector - Add Tenant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/public/css/add-tenant.css">
+    <!-- Add before your existing scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="/firebase-config.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="back-btn" id="back-btn">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="logo">
+                <i class="fas fa-user-plus"></i>
+                <span id="form-title">Add Tenant</span>
+            </div>
+            <div style="width: 36px;"></div> <!-- Spacer for alignment -->
+        </header>
+
+        <main class="content">
+            <div class="section-title">Tenant Details</div>
+            
+            <form id="tenant-form">
+                <div class="form-container">
+                    <!-- Personal Details -->
+                    <div class="form-section">
+                        <h3 class="form-title">Personal Details</h3>
+                        <div class="form-group">
+                            <label class="form-label">Tenant Name <span class="required">*</span></label>
+                            <input type="text" class="form-input" id="tenant-name" placeholder="John Doe" required>
+                            <div class="error-message" id="name-error">Name is required</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Age</label>
+                                <input type="number" class="form-input" id="tenant-age" placeholder="35" min="18" max="120">
+                                <div class="error-message" id="age-error">Age must be 18-120</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Nationality</label>
+                                <input type="text" class="form-input" id="tenant-nationality" placeholder="American">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone <span class="required">*</span></label>
+                            <input type="tel" class="form-input" id="tenant-phone" placeholder="+1 234 567 8900" required>
+                            <div class="error-message" id="phone-error">Phone is required</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" id="tenant-email" placeholder="john@example.com">
+                            <div class="error-message" id="email-error">Valid email required</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Profession</label>
+                            <input type="text" class="form-input" id="tenant-profession" placeholder="Software Engineer">
+                        </div>
+                    </div>
+
+                    <!-- Rent Details -->
+                    <div class="form-section">
+                        <h3 class="form-title">Rent Details</h3>
+                        <div class="form-group">
+                            <label class="form-label">Apartment Name <span class="required">*</span></label>
+                            <input type="text" class="form-input" id="apartment-name" placeholder="Sunshine Apartments" required>
+                            <div class="error-message" id="apartment-error">Apartment name is required</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Unit Number <span class="required">*</span></label>
+                                <input type="text" class="form-input" id="unit-number" placeholder="B-304" required>
+                                <div class="error-message" id="unit-error">Unit number is required</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Place</label>
+                                <input type="text" class="form-input" id="place" placeholder="New York, NY">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Advance Amount ($)</label>
+                                <input type="number" class="form-input" id="advance-amount" placeholder="2000" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Monthly Rent ($) <span class="required">*</span></label>
+                                <input type="number" class="form-input" id="monthly-rent" placeholder="1200" required min="1">
+                                <div class="error-message" id="rent-error">Rent must be at least $1</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Monthly Other Bills ($)</label>
+                            <input type="number" class="form-input" id="monthly-bills" placeholder="150" min="0">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Day of Rent <span class="required">*</span></label>
+                                <input type="number" min="1" max="31" class="form-input" id="rent-day" placeholder="1" required>
+                                <div class="error-message" id="rent-day-error">Must be between 1-31</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Rent Due Day <span class="required">*</span></label>
+                                <input type="number" min="1" max="31" class="form-input" id="rent-due-day" placeholder="5" required>
+                                <div class="error-message" id="due-day-error">Must be between 1-31</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Utilities Provided</label>
+                            <div class="utilities-container" id="utilities-container">
+                                <!-- Utilities will be added here -->
+                            </div>
+                            <div class="add-utility">
+                                <input type="text" class="form-input" id="new-utility" placeholder="Add utility (e.g., Water)">
+                                <button type="button" class="btn btn-primary" id="add-utility-btn">Add</button>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Start Period <span class="required">*</span></label>
+                                <input type="date" class="form-input" id="start-period" required>
+                                <div class="error-message" id="start-period-error">Start date is required</div>
+                            </div>
+                            <!-- Add error message -->
+                            <div class="form-group">
+                                <label class="form-label">End Period</label>
+                                <input type="date" class="form-input" id="end-period">
+                                <div class="error-message" id="end-period-error">End date cannot be before start date</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Contact -->
+                    <div class="form-section">
+                        <h3 class="form-title">Emergency Contact</h3>
+                        <div class="form-group">
+                            <label class="form-label">Contact Name</label>
+                            <input type="text" class="form-input" id="emergency-name" placeholder="Jane Doe">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Relationship</label>
+                            <input type="text" class="form-input" id="emergency-relation" placeholder="Spouse">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" class="form-input" id="emergency-phone" placeholder="+1 234 567 8900">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="cancel-btn">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="save-btn">
+                        Save Tenant
+                    </button>
+                </div>
+            </form>
+        </main>
+    </div>
+    <script src="/public/js/add-tenant.js"></script>
+</body>
+</html>

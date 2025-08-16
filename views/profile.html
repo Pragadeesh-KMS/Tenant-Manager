@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Collector - Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/public/css/profile.css">
+    <!-- Add before your existing scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="/firebase-config.js"></script>
+
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="back-btn" id="back-btn">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="logo">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </div>
+            <div style="width: 36px;"></div>
+        </header>
+
+        <main class="content">
+            <div class="form-container">
+                <form id="profile-form">
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-input" id="user-name" placeholder="John Doe" required>
+                        <div class="error-message" id="name-error">Name is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" id="user-email" placeholder="john@example.com" required readonly>
+                        <div class="error-message" id="email-error">Valid email is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone</label>
+                        <input type="tel" class="form-input" id="user-phone" placeholder="+1 234 567 8900">
+                        <div class="error-message" id="phone-error">Valid phone number required</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Age</label>
+                        <input type="number" class="form-input" id="user-age" placeholder="35" min="18" max="120">
+                        <div class="error-message" id="age-error">Age must be between 18-120</div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Profile</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="/public/js/profile.js"></script>
+</body>
+</html>

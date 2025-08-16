@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Collector - Tenant Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/public/css/view-tenant.css">
+
+    <!-- Add Firebase scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script src="/firebase-config.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <div class="tenant-header-detail">
+            <div class="back-btn" id="back-btn">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <h1 class="tenant-detail-name" id="detail-tenant-name">Loading...</h1>
+            <div class="tenant-detail-location" id="detail-location"></div>
+            <div class="header-actions">
+                <div class="icon-btn" id="edit-btn">
+                    <i class="fas fa-edit"></i>
+                </div>
+                <div class="icon-btn" id="delete-btn">
+                    <i class="fas fa-trash"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tenant-tabs">
+            <div class="tenant-tab active" data-tab="rental">Rental Data</div>
+            <div class="tenant-tab" data-tab="rent">Rent</div>
+        </div>
+        
+        <div class="tab-content">
+            <!-- Rental Data Tab (Combined Personal + Rental) -->
+            <div class="tab-pane active" id="rental-tab">
+                <div class="detail-section">
+                    <h3 class="detail-title"><i class="fas fa-user"></i> Personal Information</h3>
+                    <div class="detail-grid" id="personal-details">
+                        <!-- Personal details will be populated here -->
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h3 class="detail-title"><i class="fas fa-home"></i> Rental Information</h3>
+                    <div class="detail-grid" id="rental-details">
+                        <!-- Rental details will be populated here -->
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h3 class="detail-title"><i class="fas fa-exclamation-triangle"></i> Emergency Contact</h3>
+                    <div class="detail-grid" id="emergency-details">
+                        <!-- Emergency contact details will be populated here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rent Tab -->
+            <div class="tab-pane" id="rent-tab" style="display: none;">
+                <div class="detail-section">
+                    <h3 class="detail-title" style="flex-direction: column; align-items: center; text-align: center;">
+                        <span style="margin-bottom: 0.5rem;"><i class="fas fa-file-invoice-dollar"></i> Rent Payment Status</span>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" id="select-all-payments" style="width: 20px; height: 20px;" />
+                            <span style="font-size: 0.95rem;">Mark All as Paid</span>
+                        </label>
+                    </h3>
+
+                    
+                       <div id="rent-cards-container">
+                        <!-- Rent cards will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/public/js/view-tenant.js"></script>
+</body>
+</html>

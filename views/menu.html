@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Collector - Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/public/css/menu.css">
+    <!-- Add before your existing scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="/firebase-config.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="back-btn" id="back-btn">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="logo">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </div>
+            <div style="width: 36px;"></div> <!-- Spacer for alignment -->
+        </header>
+
+        <main class="content">
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <span id="user-avatar-text">U</span>
+                </div>
+                <div class="user-info">
+                    <h3 id="user-display-name">User Name</h3>
+                    <p>Property Owner</p>
+                </div>
+            </div>
+
+            <ul class="menu-list">
+
+                <li class="menu-item" id="profile">
+                    <i class="fas fa-user"></i>
+                    <span class="menu-item-text">Profile</span>
+                </li>
+                <li class="menu-item" id="settings">
+                    <i class="fas fa-cog"></i>
+                    <span class="menu-item-text">Settings</span>
+                </li>
+                <li class="menu-item logout" id="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="menu-item-text">Log Out</span>
+                </li>
+            </ul>
+        </main>
+    </div>
+    <script src="/public/js/menu.js"></script>
+</body>
+</html>

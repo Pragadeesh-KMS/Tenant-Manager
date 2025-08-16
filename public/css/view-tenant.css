@@ -1,0 +1,440 @@
+:root {
+    --primary: #e94315;
+    --primary-light: #8625fc;
+    --secondary: #ff6b6b;
+    --success: #1dd1a1;
+    --danger: #ff6b6b;
+    --warning: #feca57;
+    --light: #ffffff;
+    --dark: #2d3436;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dfe6e9;
+    --gray-600: #6c757d;
+    --gray-800: #343a40;
+    --shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 12px 25px rgba(0, 0, 0, 0.15);
+    --border-radius: 16px;
+    --transition: all 0.3s ease;
+    --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--gray-100);
+    background-image: radial-gradient(#dfe6e9 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.app-container {
+    max-width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: var(--light);
+    position: relative;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .app-container {
+        max-width: 1800px;
+    }
+}
+
+.tenant-header-detail {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 2rem 1.5rem 3rem;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    position: relative;
+    box-shadow: var(--shadow);
+}
+
+.back-btn {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.header-actions {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.icon-btn {
+    background: rgba(255, 255, 255, 0.2);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.tenant-detail-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tenant-detail-location {
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.tenant-tabs {
+    display: flex;
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin: -1.5rem 1.5rem 0;
+    position: relative;
+    z-index: 10;
+    box-shadow: var(--shadow);
+}
+
+.tenant-tab {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    border-bottom: 3px solid transparent;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.tenant-tab.active {
+    border-bottom: 3px solid var(--primary);
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.tab-content {
+    padding: 1.5rem;
+}
+
+.detail-section {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-200);
+    transition: var(--transition);
+}
+
+.detail-section:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+}
+
+.detail-title {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    color: var(--primary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gray-200);
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.detail-item {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border-radius: 12px;
+    background: rgba(106, 17, 203, 0.03);
+    transition: var(--transition);
+}
+
+.detail-item:hover {
+    background: rgba(106, 17, 203, 0.07);
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    color: var(--gray-600);
+    margin-bottom: 0.2rem;
+    font-weight: 500;
+}
+
+.detail-value {
+    font-weight: 600;
+    color: var(--gray-800);
+    font-size: 1.1rem;
+}
+
+.pending-amount {
+    color: var(--danger);
+}
+
+.paid-amount {
+    color: var(--success);
+}
+
+.rent-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-200);
+    transition: var(--transition);
+}
+
+.rent-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+}
+
+.rent-card-header {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 0.5rem;
+}
+
+.rent-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.rent-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.rent-item:hover {
+    background: rgba(106, 17, 203, 0.05);
+}
+
+.rent-item-label {
+    font-weight: 500;
+}
+
+.rent-item-value {
+    font-weight: 600;
+}
+
+.payment-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.payment-status input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+.no-data {
+    text-align: center;
+    padding: 2rem;
+    color: var(--gray-600);
+}
+
+.account-closed {
+    color: var(--danger);
+    font-weight: bold;
+}
+
+.utility-amount {
+    width: 60px;
+    padding: 0.3rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 8px;
+    margin-right: 0.5rem;
+    text-align: center;
+    background: var(--gray-100);
+    transition: var(--transition);
+}
+
+.utility-amount:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+    outline: none;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: var(--transition);
+    background: var(--gray-100);
+}
+
+.form-input:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    text-decoration: none;
+    width: 100%;
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(rgba(255,255,255,0.2), transparent);
+    transform: rotate(30deg);
+    transition: var(--transition);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(106, 17, 203, 0.3);
+}
+
+.btn:hover::after {
+    transform: rotate(30deg) translate(10%, 10%);
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5a0db4, #1c65e8);
+}
+
+.other-toggle-btn {
+background: var(--gray-100);
+color: var(--gray-600);
+cursor: pointer;
+transition: var(--transition);
+}
+.other-toggle-btn.included {
+background: var(--success);
+color: white;
+border-color: var(--success);
+}
+
+
+@media (max-width: 480px) {
+    .app-container {
+        max-width: 100%;
+    }
+    
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tenant-detail-name {
+        font-size: 1.5rem;
+    }
+    
+    .tenant-detail-location {
+        font-size: 1rem;
+    }
+    
+    .rent-card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .detail-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .rent-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tab-content {
+        padding: 2rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .detail-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
